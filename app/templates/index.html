@@ -1,0 +1,25 @@
+{% extends 'layout.html'%}
+
+{% block content%}
+    <h1>Books</h1>
+    <form action="/" method="post">
+        {% csrf_token %}
+        
+        {%if book.title.errors%}
+            {%for err_title in book.title.errors %}
+                <p>{{err_title|escape}}
+
+            {%endfor%}
+        {%endif%}
+        {%if book %}
+        
+         {%for r in book%}
+                <p>{{r.label_tag}}</p>
+                {{r}}
+
+            {%endfor%} 
+        {%endif%}
+       <p> <input type="submit" value="Add Book"></p>
+    </form
+
+{%endblock%}
